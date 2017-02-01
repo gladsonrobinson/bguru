@@ -1,0 +1,35 @@
+<header class="hero-unit" id="banner">
+   <div class="row">
+    <div class="btn-group col-md-2 pull-left" uib-dropdown dropdown-append-to-body>
+      <button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>
+        {{$ctrl.searchCategory+ ' '}}<span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+        <li role="menuitem"><a ng-click="$ctrl.searchCategory = 'Order Id'; $ctrl.searchCategoryId = 'orderId'">Order Id</a></li>
+        <li role="menuitem"><a ng-click="$ctrl.searchCategory = 'Company Name'; $ctrl.searchCategoryId = 'CompanyName'">Company Name</a></li>
+        <li role="menuitem"><a ng-click="$ctrl.searchCategory = 'Address'; $ctrl.searchCategoryId = 'address'">Address</a></li>
+      </ul>
+    </div>
+
+    <div class="col-md-6 pull-left">
+      <input type="text" ng-model="$ctrl.searchKey" placeholder="Search with {{$ctrl.searchCategory}}" class="form-control ">
+    </div>
+     <div class="col-md-4">
+      <button type="button" class='btn btn-default pull-left' ng-click="$ctrl.search()">Search</button>
+    </div>
+
+    <!-- <div class="col-md-6 pull-left">
+      <input type="text" ng-model="asyncSelected" placeholder="Search with {{$ctrl.searchCategory}}" uib-typeahead="suggestion for suggestions in $ctrl.getSuggestion($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="$ctrl.noResults" class="form-control">
+    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+      <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div>
+    </div> -->
+    
+
+  </div>
+</header>
+
+<div class="container">
+  <div id="grid1" ui-grid="$ctrl.gridOptions" class="grid"></div>
+</div>
