@@ -52,8 +52,7 @@ module.exports = function makeWebpackConfig(options) {
                 'angular-ui-bootstrap',
                 'angular-ui-router',
                 'lodash',
-                'angular-ui-grid',
-                'angular-typeahead'
+                'angular-ui-grid'
             ]
         };
     }

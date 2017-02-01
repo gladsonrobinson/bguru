@@ -94,7 +94,6 @@ export function UtilService($window, $http) {
     },
 
     getOrderSearch(query) {
-      console.log(query)
       return $http.get('/api/orders/search', query);
     }
   };

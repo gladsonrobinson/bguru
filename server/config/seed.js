@@ -29,5 +29,20 @@ Order.find({}).remove()
       company: { name: 'Qburst', id: 1115},
       address: 'Test address 2',
       item: { name: 'samsung', id: 2005}
+    },
+    {
+      company: { name: 'CTS', id: 1116},
+      address: 'Info park',
+      item: { name: 'bell system', id: 2006}
+    },
+    {
+      company: { name: 'TCS', id: 1117},
+      address: 'Techno park',
+      item: { name: 'samsung', id: 2005}
+    },
+    {
+      company: { name: 'CTS', id: 1116},
+      address: 'Info park',
+      item: { name: 'Iphone', id: 2004}
     });
   });

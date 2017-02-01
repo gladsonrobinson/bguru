@@ -52,8 +52,6 @@ export class MainController {
         }
       };
       this.Util.getOrderSearch(query).then(response => {
-        console.log(response)
-        //this.coloumDefObject = new Array({});
         this.gridOptions.columnDefs = this.Util.getColoumObject();
         this.gridOptions.data = response.data;
       });
@@ -68,7 +66,6 @@ export class MainController {
         }
       };
       this.Util.getOrderSearch(query).then(response => {
-        console.log(response)
         this.gridOptions.columnDefs = this.Util.getColoumObject();
         this.gridOptions.data = response.data;
       });

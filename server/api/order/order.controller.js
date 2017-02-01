@@ -53,9 +53,13 @@ export function search(req, res) {
         address_order_count: 1
       };
 		} else if(req.query.searchCategoryId === 'orderId') {
-			query = {
-				'_id':  new mongo.ObjectID(req.query.searchValue)
-			};
+			try {
+				query = {
+					'_id':  new mongo.ObjectID(req.query.searchValue)
+				};
+			} catch (e){
+				console.log(e)
+			}
 		} else if(req.query.searchCategoryId === 'showAllOrder') {
 			query = {
 				[req.query.field]: req.query.searchValue
@@ -77,6 +81,35 @@ export function removeOrder(req, res) {
   return Order.findById(req.params.id).exec()
     .then(removeField(res))
     .catch(handleError(res));
+}
+
+export function getItems(req, res) {
+
+	var aggregateQuery = [
+		{ 
+			$group: {
+				_id: '$item',
+				number_of_orders: { $sum:1 }
+			}
+		},
+		{
+			$project: {
+				item: '$_id',
+				_id: 0,
+	      number_of_orders: 1
+			}
+		},
+		{
+			$sort: {
+				number_of_orders: -1
+			}
+		}
+	];
+
+	return Order.aggregate(aggregateQuery)
+		.exec()
+		.then(respondWithResult(res))
+		.catch(handleError(res));
 }
 
 

@@ -1,14 +1,23 @@
 'use strict';
 
 export default class ItemController {
-  /*@ngInject*/
-  constructor() {
-    // Use the User $resource to fetch all users
-    //his.users = User.query();
+ 
+  constructor($http) {
+  	'ngInject';
+    this.$http = $http;
   }
 
-  delete(user) {
-    // user.$remove();
-    // this.users.splice(this.users.indexOf(user), 1);
+  $onInit() {
+  	this.gridOptions = {
+      enableColumnMenus: false
+    };
+    this.gridOptions.columnDefs = [
+    	{field: 'item.name', displayName: 'Item Name'},
+        {field: 'number_of_orders', displayName: 'Number of Orders'}
+    ];
+  	this.$http.get('/api/orders/getItems')
+      .then(response => {
+        this.gridOptions.data = response.data;
+      });
   }
 }
