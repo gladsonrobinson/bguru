@@ -58,7 +58,7 @@ export function search(req, res) {
 					'_id':  new mongo.ObjectID(req.query.searchValue)
 				};
 			} catch (e){
-				console.log(e)
+				return res.status(500).json({message: 'Invalid Order Id'});
 			}
 		} else if(req.query.searchCategoryId === 'showAllOrder') {
 			query = {
